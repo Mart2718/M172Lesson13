@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<!--
+  Lesson 13: Solving Trig Equations and Identities — Math 172, Santa Ana College
+  Navigation model: Sidebar (7 major sections — students need wayfinding)
+  Build order: lecture-to-interactive-web orchestrator output
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 13: Solving Trig Equations and Identities — Math 172</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+  <style>
+    :root {
+      --teal-dark: #1a6b6b;
+      --teal-mid: #2a8f8f;
+      --teal-light: #e6f4f4;
+      --orange: #e07020;
+      --orange-light: #fff3e6;
+      --navy: #1a1a2e;
+      --gray-light: #f5f5f5;
+      --gray-mid: #cccccc;
+      --gray-text: #444;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: Georgia, serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: var(--gray-text);
+      line-height: 1.55;
+    }
+    header.top {
+      background: var(--navy);
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header.top .label {
+      margin: 0;
+      font-size: 12px;
+      letter-spacing: 1px;
+      opacity: 0.7;
+      text-transform: uppercase;
+    }
+    header.top h1 {
+      margin: 4px 0 0;
+      font-size: 22px;
+      font-weight: normal;
+      font-family: Georgia, serif;
+    }
+    header.top .meta {
+      font-size: 12px;
+      opacity: 0.6;
+      text-align: right;
+    }
+    .objectives {
+      background: var(--teal-dark);
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 14px;
+    }
+    .objectives ul { margin: 6px 0 0; padding-left: 22px; }
+    .objectives li { margin: 2px 0; }
+
+    .layout { display: flex; min-height: 100vh; }
+    nav.sidebar {
+      width: 240px;
+      background: #fff;
+      border-right: 1px solid var(--gray-mid);
+      padding: 18px 14px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      flex-shrink: 0;
+    }
+    nav.sidebar h3 {
+      color: var(--teal-dark);
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--gray-mid);
+      padding-bottom: 6px;
+      margin: 0 0 10px;
+    }
+    nav.sidebar a {
+      display: block;
+      padding: 8px 10px;
+      color: var(--gray-text);
+      text-decoration: none;
+      font-size: 14px;
+      border-radius: 4px;
+      margin: 2px 0;
+      transition: background 0.15s, color 0.15s;
+    }
+    nav.sidebar a:hover { background: var(--teal-light); color: var(--teal-dark); }
+    nav.sidebar a.active { background: var(--teal-dark); color: #fff; }
+
+    main {
+      flex: 1;
+      padding: 28px 36px 60px;
+      max-width: 980px;
+    }
+    section { scroll-margin-top: 16px; padding: 16px 0 24px; }
+    section h2 {
+      color: var(--teal-dark);
+      font-family: Georgia, serif;
+      font-size: 26px;
+      border-bottom: 2px solid var(--teal-dark);
+      padding-bottom: 6px;
+      margin-top: 12px;
+    }
+    section h3 {
+      color: var(--teal-dark);
+      font-size: 18px;
+      margin-top: 22px;
+    }
+    .hook {
+      background: var(--orange-light);
+      border-left: 5px solid var(--orange);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+    .def-box {
+      background: var(--teal-light);
+      border-left: 5px solid var(--teal-dark);
+      padding: 14px 18px;
+      margin: 20px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .def-box .label {
+      margin: 0 0 4px;
+      font-size: 12px;
+      color: #555;
+      font-style: italic;
+    }
+    .reminder {
+      background: var(--orange-light);
+      border-left: 5px solid var(--orange);
+      padding: 12px 16px;
+      margin: 16px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 15px;
+    }
+    .example {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 22px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .example h3 {
+      color: var(--teal-dark);
+      margin-top: 0;
+      font-size: 18px;
+    }
+    .example .try-cue {
+      color: #888;
+      font-style: italic;
+      font-size: 14px;
+    }
+    .step {
+      border-top: 1px solid #eee;
+      padding: 12px 0 4px;
+    }
+    .step strong.lbl { color: var(--teal-dark); }
+    .answer-box {
+      background: var(--teal-light);
+      border-left: 4px solid var(--teal-dark);
+      padding: 10px 14px;
+      margin-top: 14px;
+      border-radius: 0 6px 6px 0;
+      font-size: 16px;
+    }
+    .answer-box strong { color: var(--teal-dark); }
+    .btn {
+      background: var(--teal-dark);
+      color: #fff;
+      border: none;
+      padding: 9px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 12px;
+      font-family: Georgia, serif;
+    }
+    .btn:hover { background: var(--teal-mid); }
+    .btn-orange {
+      background: var(--orange);
+    }
+    .btn-orange:hover { background: #c25a14; }
+    .guess-block {
+      background: var(--gray-light);
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin: 20px 0;
+    }
+    .guess-block input[type="text"] {
+      width: 90%;
+      padding: 8px 10px;
+      font-size: 14px;
+      border: 1px solid var(--gray-mid);
+      border-radius: 4px;
+      font-family: Georgia, serif;
+    }
+    .reveal-content {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 14px;
+      background: var(--teal-light);
+      border-radius: 6px;
+      font-size: 15px;
+    }
+    .formula-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      margin: 16px 0;
+    }
+    .formula-cell {
+      background: var(--teal-light);
+      border: 1px solid var(--teal-dark);
+      padding: 14px;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+    .formula-cell .title {
+      font-weight: bold;
+      color: var(--teal-dark);
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    iframe.desmos {
+      border: 1px solid var(--gray-mid);
+      border-radius: 8px;
+      width: 100%;
+      height: 420px;
+      margin: 16px 0;
+      display: block;
+    }
+    .practice {
+      background: #fefefe;
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+    .practice h4 {
+      color: var(--teal-dark);
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .practice .prob {
+      margin: 12px 0;
+      padding: 10px 14px;
+      background: var(--gray-light);
+      border-radius: 5px;
+    }
+    .collab {
+      background: #fff7e6;
+      border: 2px solid var(--orange);
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 22px 0;
+    }
+    .collab h3 { color: var(--orange); margin-top: 0; }
+    #exit-check {
+      background: #f0f8f8;
+      border-top: 3px solid var(--teal-dark);
+      padding: 28px 28px 36px;
+      margin-top: 40px;
+      border-radius: 8px;
+    }
+    #exit-check h2 { color: var(--teal-dark); font-size: 22px; }
+    #exit-check label { display: block; margin: 6px 0; font-size: 15px; cursor: pointer; }
+    #exit-check input[type="radio"] { margin-right: 8px; }
+    .feedback { display: none; margin-top: 8px; padding: 10px 12px; border-radius: 6px; }
+    .feedback.correct { background: var(--teal-light); color: var(--teal-dark); }
+    .feedback.incorrect { background: #fdecea; color: #c0392b; }
+    .stars-row {
+      font-size: 30px;
+      cursor: pointer;
+      letter-spacing: 6px;
+      color: var(--orange);
+      user-select: none;
+    }
+    footer.bottom {
+      background: var(--navy);
+      color: #aaa;
+      padding: 14px 24px;
+      font-size: 12px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    @media (max-width: 820px) {
+      .layout { flex-direction: column; }
+      nav.sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--gray-mid); }
+      .formula-grid { grid-template-columns: 1fr; }
+      main { padding: 20px 18px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="top">
+  <div>
+    <p class="label">Math 172 — Santa Ana College</p>
+    <h1>Lesson 13: Solving Trig Equations and Identities</h1>
+  </div>
+  <div class="meta">Part 1 &middot; Trigonometry Unit</div>
+</header>
+
+<div class="objectives">
+  <strong>By the end of this lesson you will be able to:</strong>
+  <ul>
+    <li>Solve basic trigonometric equations (exact and inverse-function forms).</li>
+    <li>Apply Reciprocal, Quotient, and Pythagorean identities to simplify expressions and verify identities.</li>
+    <li>Use Even/Odd, Sum & Difference, Double-angle, and Half-angle identities to simplify or solve.</li>
+  </ul>
+</div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <h3>Lesson Map</h3>
+    <a href="#sec-hook" class="navlink">Why this matters</a>
+    <a href="#sec-basic" class="navlink">1. Basic Trig Equations</a>
+    <a href="#sec-calc" class="navlink">2. Calculator &amp; Inverses</a>
+    <a href="#sec-app" class="navlink">3. Ferris Wheel App</a>
+    <a href="#sec-identities" class="navlink">4. Fundamental Identities</a>
+    <a href="#sec-evenodd" class="navlink">5. Even/Odd Identities</a>
+    <a href="#sec-double" class="navlink">6. Double-Angle &amp; Friends</a>
+    <a href="#sec-solve-id" class="navlink">7. Solving with Identities</a>
+    <a href="#sec-collab" class="navlink">8. Collaborative</a>
+    <a href="#exit-check" class="navlink">Exit Check</a>
+  </nav>
+
+  <main>
+
+    <!-- ========================================= -->
+    <!-- HOOK SECTION -->
+    <!-- ========================================= -->
+    <section id="sec-hook">
+      <h2>Why this matters — Bridges, balance, and identities</h2>
+      <div class="hook">
+        How can an engineer design a bridge that safely holds weight as it flexes in the wind?
+        <strong>Trigonometric identities make it possible.</strong> By using double-angle and Pythagorean
+        identities, engineers can simplify the formulas that describe how a bridge's cables and beams
+        move under stress. These identities turn messy expressions into simpler ones — helping engineers
+        predict how forces add, balance, or cancel, and ensuring the bridge stays strong and stable.
+      </div>
+      <p>Today we do two big things: we <strong>solve</strong> trig equations and we <strong>simplify or
+      verify</strong> trig identities. Both depend on the same toolkit — recognizing patterns and rewriting
+      expressions in equivalent forms.</p>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- SECTION 1: Basic Trig Equations -->
+    <!-- ========================================= -->
+    <section id="sec-basic">
+      <h2>1. Solving Basic Trig Equations</h2>
+
+      <div class="def-box">
+        <p class="label">Strategy</p>
+        <p style="margin:6px 0 0;font-size:15px;">
+          To solve an equation like \( \sin(B \cdot x) = c \), find <strong>all reference angles</strong> on
+          \( [0, 2\pi) \) where \( \sin(\theta) = c \). Then set the inside expression equal to each angle
+          plus the period, and solve for \( x \). Add \( + 2\pi k \) (or \( + \pi k \) for tangent) to capture
+          all solutions.
+        </p>
+      </div>
+
+      <div class="reminder">
+        <strong>Common mistake:</strong> Forgetting that \( \sin \) and \( \cos \) have <em>two</em>
+        reference angles per cycle. Tangent has <em>one</em> per cycle (period \( \pi \)).
+      </div>
+
+      <iframe class="desmos"
+        src="https://www.desmos.com/calculator/qcx7uvuhvw"
+        title="Graph of y = sin(3x) intersecting y = -1/2 — visualize where solutions occur"></iframe>
+
+      <!-- Guess-before-reveal -->
+      <div class="guess-block">
+        <p style="font-weight:bold;margin:0 0 10px;">
+          Predict first: How many solutions to \( \sin(3x) = -\tfrac{1}{2} \) lie in \( [0, 2\pi) \)?
+        </p>
+        <input type="text" placeholder="Type your prediction (a number)...">
+        <br><br>
+        <button class="btn btn-orange" onclick="reveal(this)">Reveal Answer</button>
+        <div class="reveal-content">
+          <strong>Six solutions.</strong> Sine takes the value \( -\tfrac{1}{2} \) twice per cycle, and
+          \( y = \sin(3x) \) completes <em>three</em> cycles on \( [0, 2\pi) \). So \(2 \times 3 = 6\)
+          solutions on that interval.
+        </div>
+      </div>
+
+      <!-- Example 1a -->
+      <div class="example">
+        <h3>Example 1a: \( \sin(3x) = -\tfrac{1}{2} \)</h3>
+        <p class="try-cue">Try this yourself before revealing the steps.</p>
+        <p>Solve for the exact solutions.</p>
+        <div id="ex-1a-steps" style="display:none;">
+          <div class="step">
+            <strong class="lbl">Step 1:</strong> Find all angles \( \theta \) in \( [0, 2\pi) \) where
+            \( \sin(\theta) = -\tfrac{1}{2} \).
+            \[ \theta = \tfrac{7\pi}{6}, \quad \tfrac{11\pi}{6} \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 2:</strong> Set the inside \( 3x \) equal to each angle, adding period
+            \(2\pi k\) to capture all solutions.
+            \[ 3x = \tfrac{7\pi}{6} + 2\pi k \quad \text{or} \quad 3x = \tfrac{11\pi}{6} + 2\pi k \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 3:</strong> Divide each equation by 3.
+            \[ x = \tfrac{7\pi}{18} + \tfrac{2\pi k}{3} \quad \text{or} \quad x = \tfrac{11\pi}{18} + \tfrac{2\pi k}{3} \]
+          </div>
+          <div class="answer-box">
+            <strong>Answer:</strong>
+            \( x = \dfrac{7\pi}{18} + \dfrac{2\pi k}{3} \) or
+            \( x = \dfrac{11\pi}{18} + \dfrac{2\pi k}{3} \), \(k \in \mathbb{Z}\)
+          </div>
+        </div>
+        <button class="btn" onclick="revealSteps('ex-1a', this)">Show Example Solution</button>
+      </div>
+
+      <!-- Example 1b -->
+      <div class="example">
+        <h3>Example 1b: \( \tan\!\left(x - \tfrac{\pi}{4}\right) = \tfrac{\sqrt{3}}{3} \)</h3>
+        <p class="try-cue">Try this yourself before revealing the steps.</p>
+        <p>Solve for the exact solutions.</p>
+        <div id="ex-1b-steps" style="display:none;">
+          <div class="step">
+            <strong class="lbl">Step 1:</strong> Recognize \( \tfrac{\sqrt{3}}{3} = \tfrac{1}{\sqrt{3}} \).
+            Find one angle in \( [0, \pi) \) where \( \tan(\theta) = \tfrac{1}{\sqrt{3}} \).
+            \[ \theta = \tfrac{\pi}{6} \]
+            (Tangent has period \( \pi \), so we only need one base angle.)
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 2:</strong> Set inside expression equal to base angle plus \( \pi k \).
+            \[ x - \tfrac{\pi}{4} = \tfrac{\pi}{6} + \pi k \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 3:</strong> Solve for \( x \). Common denominator is 12.
+            \[ x = \tfrac{\pi}{6} + \tfrac{\pi}{4} + \pi k = \tfrac{2\pi}{12} + \tfrac{3\pi}{12} + \pi k \]
+          </div>
+          <div class="answer-box">
+            <strong>Answer:</strong> \( x = \dfrac{5\pi}{12} + \pi k, \quad k \in \mathbb{Z} \)
+          </div>
+        </div>
+        <button class="btn" onclick="revealSteps('ex-1b', this)">Show Example Solution</button>
+      </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- SECTION 2: Calculator and Inverses -->
+    <!-- ========================================= -->
+    <section id="sec-calc">
+      <h2>2. Solving with a Calculator and Inverse Functions</h2>
+
+      <div class="def-box">
+        <p class="label">When to reach for the calculator</p>
+        <p style="margin:6px 0 0;font-size:15px;">
+          When the right side is <em>not</em> a unit-circle value (like \( -0.8528 \) or \( \tfrac{1}{3} \)),
+          use \( \sin^{-1} \), \( \cos^{-1} \), or \( \tan^{-1} \) on a calculator. Then use symmetry to find
+          the second solution in the cycle.
+        </p>
+      </div>
+
+      <div class="reminder">
+        <strong>⚠ Calculator caveat:</strong> Inverse functions return only one angle. For sine, the second
+        angle is \( \pi - \theta_1 \). For cosine, the second angle is \( 2\pi - \theta_1 \) (or equivalently
+        \( -\theta_1 \)).
+      </div>
+
+      <!-- Example 2a -->
+      <div class="example">
+        <h3>Example 2a: \( \cos(9\theta) = -0.8528 \)</h3>
+        <p class="try-cue">Try this yourself before revealing the steps.</p>
+        <div id="ex-2a-steps" style="display:none;">
+          <div class="step">
+            <strong class="lbl">Step 1:</strong> Take the inverse cosine to find the first angle.
+            \[ 9\theta_1 = \cos^{-1}(-0.8528) \approx 2.6012 \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 2:</strong> Use the cosine symmetry — second angle is \( 2\pi - 2.6012 \).
+            \[ 9\theta_2 \approx 6.2832 - 2.6012 = 3.6820 \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 3:</strong> Add the period \( 2\pi k \) and divide by 9.
+            \[ \theta = \tfrac{2.6012 + 2\pi k}{9} \quad \text{or} \quad \theta = \tfrac{3.6820 + 2\pi k}{9} \]
+          </div>
+          <div class="answer-box">
+            <strong>Answer:</strong>
+            \( \theta \approx 0.2890 + \tfrac{2\pi k}{9} \) or
+            \( \theta \approx 0.4091 + \tfrac{2\pi k}{9} \)
+          </div>
+        </div>
+        <button class="btn" onclick="revealSteps('ex-2a', this)">Show Example Solution</button>
+      </div>
+
+      <!-- Example 2b -->
+      <div class="example">
+        <h3>Example 2b: \( 3\sin(x - 4) = 1 \)</h3>
+        <p class="try-cue">Try this yourself before revealing the steps.</p>
+        <div id="ex-2b-steps" style="display:none;">
+          <div class="step">
+            <strong class="lbl">Step 1:</strong> Isolate sine.
+            \[ \sin(x - 4) = \tfrac{1}{3} \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 2:</strong> Take inverse sine for the first angle.
+            \[ x - 4 = \sin^{-1}\!\left(\tfrac{1}{3}\right) \approx 0.3398 \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 3:</strong> Sine symmetry — second angle is \( \pi - 0.3398 \).
+            \[ x - 4 \approx \pi - 0.3398 \approx 2.8018 \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 4:</strong> Add \( 2\pi k \) and add 4 to both sides.
+            \[ x \approx 4.3398 + 2\pi k \quad \text{or} \quad x \approx 6.8018 + 2\pi k \]
+          </div>
+          <div class="answer-box">
+            <strong>Answer:</strong>
+            \( x \approx 4.3398 + 2\pi k \) or \( x \approx 6.8018 + 2\pi k \)
+          </div>
+        </div>
+        <button class="btn" onclick="revealSteps('ex-2b', this)">Show Example Solution</button>
+      </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- SECTION 3: Ferris Wheel Application -->
+    <!-- ========================================= -->
+    <section id="sec-app">
+      <h2>3. Application — A Ferris Wheel Ride</h2>
+
+      <div class="def-box">
+        <p class="label">Problem</p>
+        <p style="margin:6px 0 0;font-size:15px;">
+          A rider's height (in meters) above the ground is modeled by
+          \[ h(t) = 22 + 18\sin\!\left(\tfrac{\pi}{15}t - \tfrac{\pi}{2}\right), \quad t \text{ in seconds.} \]
+          At what time(s) in the first <strong>60 seconds</strong> is the rider at <strong>30 meters</strong>?
+        </p>
+      </div>
+
+      <iframe class="desmos"
+        src="https://www.desmos.com/calculator/p3kbwpuyko"
+        title="Ferris wheel height h(t) = 22 + 18 sin(pi/15 t - pi/2) with horizontal line h = 30"></iframe>
+
+      <div class="guess-block">
+        <p style="font-weight:bold;margin:0 0 10px;">
+          Predict first: Looking at the graph, roughly how many times in the first 60 seconds does the rider
+          reach 30 m?
+        </p>
+        <input type="text" placeholder="Type your prediction...">
+        <br><br>
+        <button class="btn btn-orange" onclick="reveal(this)">Reveal Answer</button>
+        <div class="reveal-content">
+          <strong>Two times.</strong> The wheel completes one full revolution in 30 seconds, so the rider
+          passes the 30 m mark twice on the way up/down per revolution — and there are two revolutions in
+          60 seconds. But because the rider only crosses 30 m at <em>specific</em> moments, we get exactly
+          four crossings (two per revolution × two revolutions). Solve to confirm!
+        </div>
+      </div>
+
+      <div class="example">
+        <h3>Worked solution</h3>
+        <p class="try-cue">Try setting it up yourself first.</p>
+        <div id="ex-app-steps" style="display:none;">
+          <div class="step">
+            <strong class="lbl">Step 1:</strong> Set \( h(t) = 30 \) and isolate sine.
+            \[ 30 = 22 + 18\sin\!\left(\tfrac{\pi}{15}t - \tfrac{\pi}{2}\right)
+               \quad\Rightarrow\quad
+               \sin\!\left(\tfrac{\pi}{15}t - \tfrac{\pi}{2}\right) = \tfrac{8}{18} = \tfrac{4}{9} \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 2:</strong> Take inverse sine. First angle:
+            \[ \tfrac{\pi}{15}t - \tfrac{\pi}{2} \approx \sin^{-1}\!\left(\tfrac{4}{9}\right) \approx 0.4606 \]
+            Second angle (sine symmetry):
+            \[ \tfrac{\pi}{15}t - \tfrac{\pi}{2} \approx \pi - 0.4606 \approx 2.6810 \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 3:</strong> Add \( \tfrac{\pi}{2} \approx 1.5708 \) to both sides
+            (and add \( 2\pi k \)).
+            \[ \tfrac{\pi}{15}t \approx 2.0314 + 2\pi k \quad \text{or} \quad
+               \tfrac{\pi}{15}t \approx 4.2518 + 2\pi k \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 4:</strong> Multiply both sides by \( \tfrac{15}{\pi} \).
+            \[ t \approx 9.7 + 30k \quad \text{or} \quad t \approx 20.3 + 30k \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 5:</strong> Restrict to \( t \in [0, 60] \) seconds. Plug in
+            \( k = 0, 1 \).
+            \[ t \approx 9.7,\; 20.3,\; 39.7,\; 50.3 \text{ seconds} \]
+          </div>
+          <div class="answer-box">
+            <strong>Answer:</strong> The rider is at 30 m at approximately
+            \( t \approx 9.7,\, 20.3,\, 39.7, \) and \( 50.3 \) seconds.
+          </div>
+        </div>
+        <button class="btn" onclick="revealSteps('ex-app', this)">Show Example Solution</button>
+      </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- SECTION 4: Fundamental Identities -->
+    <!-- ========================================= -->
+    <section id="sec-identities">
+      <h2>4. Simplifying with Fundamental Identities</h2>
+
+      <div class="def-box">
+        <p class="label">Definition — Identity</p>
+        <p style="margin:6px 0 0;font-size:15px;">
+          An <strong>identity</strong> is an equation between two expressions that are <em>always</em> equal.
+          Identities can be used to replace one expression with the other in any context.
+        </p>
+      </div>
+
+      <h3>Reciprocal Identities</h3>
+      <div class="formula-grid">
+        <div class="formula-cell">
+          <div class="title">Cosecant</div>
+          \[ \csc(\theta) = \dfrac{1}{\sin(\theta)} \]
+        </div>
+        <div class="formula-cell">
+          <div class="title">Secant</div>
+          \[ \sec(\theta) = \dfrac{1}{\cos(\theta)} \]
+        </div>
+        <div class="formula-cell">
+          <div class="title">Cotangent</div>
+          \[ \cot(\theta) = \dfrac{1}{\tan(\theta)} \]
+        </div>
+      </div>
+
+      <h3>Quotient Identities</h3>
+      <div class="formula-grid">
+        <div class="formula-cell">
+          <div class="title">Tangent</div>
+          \[ \tan(\theta) = \dfrac{\sin(\theta)}{\cos(\theta)} \]
+        </div>
+        <div class="formula-cell">
+          <div class="title">Cotangent</div>
+          \[ \cot(\theta) = \dfrac{\cos(\theta)}{\sin(\theta)} \]
+        </div>
+        <div class="formula-cell" style="background:#fff3e6;border-color:#e07020;">
+          <div class="title" style="color:#e07020;">Why these matter</div>
+          Convert <em>everything</em> into sine and cosine when stuck.
+        </div>
+      </div>
+
+      <h3>Pythagorean Identities</h3>
+      <div class="formula-grid">
+        <div class="formula-cell">
+          \[ \sin^2(\theta) + \cos^2(\theta) = 1 \]
+        </div>
+        <div class="formula-cell">
+          \[ \sec^2(\theta) = \tan^2(\theta) + 1 \]
+        </div>
+        <div class="formula-cell">
+          \[ \csc^2(\theta) = \cot^2(\theta) + 1 \]
+        </div>
+      </div>
+
+      <!-- Simplification examples -->
+      <div class="example">
+        <h3>Example 4a: Simplify \( \sec(\theta)\cos(\theta) \)</h3>
+        <p class="try-cue">Try this yourself first.</p>
+        <div id="ex-4a-steps" style="display:none;">
+          <div class="step">
+            <strong class="lbl">Step 1:</strong> Replace \( \sec(\theta) \) with its reciprocal form.
+            \[ \sec(\theta)\cos(\theta) = \dfrac{1}{\cos(\theta)} \cdot \cos(\theta) \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 2:</strong> Cancel.
+            \[ = 1 \]
+          </div>
+          <div class="answer-box">
+            <strong>Answer:</strong> \( \sec(\theta)\cos(\theta) = 1 \)
+          </div>
+        </div>
+        <button class="btn" onclick="revealSteps('ex-4a', this)">Show Example Solution</button>
+      </div>
+
+      <div class="example">
+        <h3>Example 4b: Simplify \( \dfrac{\csc(t)}{\cot(t)} \)</h3>
+        <p class="try-cue">Convert to sine and cosine first.</p>
+        <div id="ex-4b-steps" style="display:none;">
+          <div class="step">
+            <strong class="lbl">Step 1:</strong> Rewrite each function in sine/cosine form.
+            \[ \dfrac{\csc(t)}{\cot(t)} = \dfrac{\,\tfrac{1}{\sin(t)}\,}{\,\tfrac{\cos(t)}{\sin(t)}\,} \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 2:</strong> Multiply by the reciprocal of the denominator.
+            \[ = \dfrac{1}{\sin(t)} \cdot \dfrac{\sin(t)}{\cos(t)} = \dfrac{1}{\cos(t)} \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 3:</strong> Recognize the reciprocal identity.
+            \[ = \sec(t) \]
+          </div>
+          <div class="answer-box">
+            <strong>Answer:</strong> \( \dfrac{\csc(t)}{\cot(t)} = \sec(t) \)
+          </div>
+        </div>
+        <button class="btn" onclick="revealSteps('ex-4b', this)">Show Example Solution</button>
+      </div>
+
+      <div class="example">
+        <h3>Example 4c: Simplify \( \dfrac{\csc^2(\theta)}{\csc^2(\theta) - 1} \)</h3>
+        <p class="try-cue">Spot the Pythagorean identity in the denominator.</p>
+        <div id="ex-4c-steps" style="display:none;">
+          <div class="step">
+            <strong class="lbl">Step 1:</strong> Recall \( \csc^2(\theta) = \cot^2(\theta) + 1 \), so
+            \( \csc^2(\theta) - 1 = \cot^2(\theta) \).
+            \[ \dfrac{\csc^2(\theta)}{\csc^2(\theta) - 1} = \dfrac{\csc^2(\theta)}{\cot^2(\theta)} \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 2:</strong> Convert both to sine/cosine.
+            \[ = \dfrac{\,\tfrac{1}{\sin^2\theta}\,}{\,\tfrac{\cos^2\theta}{\sin^2\theta}\,}
+               = \dfrac{1}{\sin^2\theta} \cdot \dfrac{\sin^2\theta}{\cos^2\theta}
+               = \dfrac{1}{\cos^2\theta} \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 3:</strong> Recognize this as \( \sec^2(\theta) \).
+          </div>
+          <div class="answer-box">
+            <strong>Answer:</strong> \( \dfrac{\csc^2(\theta)}{\csc^2(\theta) - 1} = \sec^2(\theta) \)
+          </div>
+        </div>
+        <button class="btn" onclick="revealSteps('ex-4c', this)">Show Example Solution</button>
+      </div>
+
+      <div class="example">
+        <h3>Example 4d: Simplify \( \dfrac{\sin^2(\theta) + \cos^2(\theta)}{\sin^2(\theta)} \)</h3>
+        <p class="try-cue">The numerator should look very familiar.</p>
+        <div id="ex-4d-steps" style="display:none;">
+          <div class="step">
+            <strong class="lbl">Step 1:</strong> The numerator equals 1 by the Pythagorean identity.
+            \[ \dfrac{\sin^2(\theta) + \cos^2(\theta)}{\sin^2(\theta)} = \dfrac{1}{\sin^2(\theta)} \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 2:</strong> Recognize as \( \csc^2(\theta) \).
+          </div>
+          <div class="answer-box">
+            <strong>Answer:</strong> \( \dfrac{\sin^2(\theta) + \cos^2(\theta)}{\sin^2(\theta)} = \csc^2(\theta) \)
+          </div>
+        </div>
+        <button class="btn" onclick="revealSteps('ex-4d', this)">Show Example Solution</button>
+      </div>
+
+      <!-- Verify identity -->
+      <div class="example">
+        <h3>Example 4e: Verify the identity \( \sin(t)\cot(t) = \cos(t) \)</h3>
+        <p class="try-cue">Start with the more complex side. Convert everything to sine and cosine.</p>
+        <div id="ex-4e-steps" style="display:none;">
+          <div class="step">
+            <strong class="lbl">Step 1:</strong> Begin with the LHS. Replace \( \cot(t) \) with
+            \( \tfrac{\cos(t)}{\sin(t)} \).
+            \[ \sin(t)\cot(t) = \sin(t) \cdot \dfrac{\cos(t)}{\sin(t)} \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 2:</strong> Cancel the \( \sin(t) \).
+            \[ = \cos(t) \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 3:</strong> LHS = RHS. Identity verified. \( \blacksquare \)
+          </div>
+          <div class="answer-box">
+            <strong>Verified:</strong> \( \sin(t)\cot(t) = \cos(t) \)
+          </div>
+        </div>
+        <button class="btn" onclick="revealSteps('ex-4e', this)">Show Verification</button>
+      </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- SECTION 5: Even/Odd Identities -->
+    <!-- ========================================= -->
+    <section id="sec-evenodd">
+      <h2>5. Even/Odd Identities</h2>
+
+      <div class="def-box">
+        <p class="label">Definitions</p>
+        <p style="margin:6px 0 0;font-size:15px;">
+          Sine is an <strong>odd</strong> function: \( \sin(-\theta) = -\sin(\theta) \). <br>
+          Cosine is an <strong>even</strong> function: \( \cos(-\theta) = \cos(\theta) \). <br>
+          (And tangent is odd: \( \tan(-\theta) = -\tan(\theta) \), since odd/even = odd.)
+        </p>
+      </div>
+
+      <div class="reminder">
+        <strong>How to remember:</strong> Even = symmetric about the y-axis (cosine). Odd = symmetric about
+        the origin (sine). The "minus sign" comes <em>out</em> of sine but disappears for cosine.
+      </div>
+
+      <div class="example">
+        <h3>Example 5: Rewrite \( \cos(-t) = \sin(-t) \) to eliminate the negative signs.</h3>
+        <p class="try-cue">Apply each even/odd identity.</p>
+        <div id="ex-5-steps" style="display:none;">
+          <div class="step">
+            <strong class="lbl">Step 1:</strong> Cosine is even — \( \cos(-t) = \cos(t) \).
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 2:</strong> Sine is odd — \( \sin(-t) = -\sin(t) \).
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 3:</strong> Substitute back into the equation.
+            \[ \cos(t) = -\sin(t) \]
+          </div>
+          <div class="answer-box">
+            <strong>Answer:</strong> \( \cos(t) = -\sin(t) \)
+          </div>
+        </div>
+        <button class="btn" onclick="revealSteps('ex-5', this)">Show Example Solution</button>
+      </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- SECTION 6: Double Angle / Half Angle / Sum-Diff -->
+    <!-- ========================================= -->
+    <section id="sec-double">
+      <h2>6. Double-Angle, Half-Angle &amp; Sum/Difference Identities</h2>
+
+      <h3>Double-Angle Identities</h3>
+      <div class="formula-grid">
+        <div class="formula-cell">
+          <div class="title">Sine</div>
+          \[ \sin(2a) = 2\sin(a)\cos(a) \]
+        </div>
+        <div class="formula-cell">
+          <div class="title">Cosine (3 forms)</div>
+          \[ \cos(2a) = \cos^2(a) - \sin^2(a) \]
+          \[ = 1 - 2\sin^2(a) \]
+          \[ = 2\cos^2(a) - 1 \]
+        </div>
+        <div class="formula-cell">
+          <div class="title">Tangent</div>
+          \[ \tan(2a) = \dfrac{2\tan(a)}{1 - \tan^2(a)} \]
+        </div>
+      </div>
+
+      <h3>Sum &amp; Difference Identities</h3>
+      <div class="formula-grid">
+        <div class="formula-cell">
+          \[ \sin(\alpha \pm \beta) = \sin\alpha \cos\beta \pm \cos\alpha \sin\beta \]
+        </div>
+        <div class="formula-cell">
+          \[ \cos(\alpha \pm \beta) = \cos\alpha \cos\beta \mp \sin\alpha \sin\beta \]
+        </div>
+        <div class="formula-cell">
+          \[ \tan(\alpha \pm \beta) = \dfrac{\tan\alpha \pm \tan\beta}{1 \mp \tan\alpha \tan\beta} \]
+        </div>
+      </div>
+
+      <h3>Half-Angle Identities</h3>
+      <div class="formula-grid">
+        <div class="formula-cell">
+          \[ \sin\!\left(\tfrac{a}{2}\right) = \pm\sqrt{\tfrac{1 - \cos a}{2}} \]
+        </div>
+        <div class="formula-cell">
+          \[ \cos\!\left(\tfrac{a}{2}\right) = \pm\sqrt{\tfrac{1 + \cos a}{2}} \]
+        </div>
+        <div class="formula-cell">
+          \[ \tan\!\left(\tfrac{a}{2}\right) = \dfrac{1 - \cos a}{\sin a} \]
+        </div>
+      </div>
+
+      <div class="reminder">
+        <strong>Sign choice for half-angle:</strong> The \( \pm \) is decided by which quadrant
+        \( \tfrac{a}{2} \) lies in.
+      </div>
+
+      <!-- Double angle worked example -->
+      <div class="example">
+        <h3>Example 6: If \( \cos(x) = \tfrac{8}{19} \), find \( \sin(2x) \).</h3>
+        <p class="try-cue">You'll need both Pythagorean and double-angle identities.</p>
+        <div id="ex-6-steps" style="display:none;">
+          <div class="step">
+            <strong class="lbl">Step 1:</strong> We need \( \sin(x) \). Use the Pythagorean identity.
+            \[ \sin^2(x) = 1 - \cos^2(x) = 1 - \tfrac{64}{361} = \tfrac{297}{361} \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 2:</strong> Take the square root. (Without quadrant info, take
+            the positive value.)
+            \[ \sin(x) = \dfrac{\sqrt{297}}{19} \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 3:</strong> Apply the double-angle identity for sine.
+            \[ \sin(2x) = 2\sin(x)\cos(x) = 2 \cdot \dfrac{\sqrt{297}}{19} \cdot \dfrac{8}{19} \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 4:</strong> Multiply.
+            \[ \sin(2x) = \dfrac{16\sqrt{297}}{361} \]
+          </div>
+          <div class="answer-box">
+            <strong>Answer:</strong> \( \sin(2x) = \dfrac{16\sqrt{297}}{361} \approx 0.764 \)
+          </div>
+        </div>
+        <button class="btn" onclick="revealSteps('ex-6', this)">Show Example Solution</button>
+      </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- SECTION 7: Solving Equations Using Identities -->
+    <!-- ========================================= -->
+    <section id="sec-solve-id">
+      <h2>7. Solving Equations Using Identities</h2>
+
+      <div class="def-box">
+        <p class="label">Strategy</p>
+        <p style="margin:6px 0 0;font-size:15px;">
+          When an equation mixes multiple trig functions or different arguments, use identities to
+          rewrite everything in <em>one</em> function and <em>one</em> argument first. Then it becomes
+          a basic trig equation (or a quadratic in disguise).
+        </p>
+      </div>
+
+      <div class="example">
+        <h3>Example 7a: Solve \( 2\sin(\theta)\cos(\theta) = \tfrac{\sqrt{3}}{2} \)</h3>
+        <p class="try-cue">Recognize the double-angle pattern!</p>
+        <div id="ex-7a-steps" style="display:none;">
+          <div class="step">
+            <strong class="lbl">Step 1:</strong> The LHS is exactly \( \sin(2\theta) \).
+            \[ \sin(2\theta) = \tfrac{\sqrt{3}}{2} \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 2:</strong> Find angles where sine equals \( \tfrac{\sqrt{3}}{2} \).
+            \[ 2\theta = \tfrac{\pi}{3} + 2\pi k \quad \text{or} \quad 2\theta = \tfrac{2\pi}{3} + 2\pi k \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 3:</strong> Divide by 2.
+            \[ \theta = \tfrac{\pi}{6} + \pi k \quad \text{or} \quad \theta = \tfrac{\pi}{3} + \pi k \]
+          </div>
+          <div class="answer-box">
+            <strong>Answer:</strong>
+            \( \theta = \dfrac{\pi}{6} + \pi k \) or \( \theta = \dfrac{\pi}{3} + \pi k \)
+          </div>
+        </div>
+        <button class="btn" onclick="revealSteps('ex-7a', this)">Show Example Solution</button>
+      </div>
+
+      <div class="example">
+        <h3>Example 7b: Solve \( \sin^2(x) + \cos(2x) = 1 \)</h3>
+        <p class="try-cue">Use a double-angle form for cosine.</p>
+        <div id="ex-7b-steps" style="display:none;">
+          <div class="step">
+            <strong class="lbl">Step 1:</strong> Replace \( \cos(2x) \) with \( 1 - 2\sin^2(x) \).
+            \[ \sin^2(x) + 1 - 2\sin^2(x) = 1 \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 2:</strong> Simplify.
+            \[ -\sin^2(x) + 1 = 1 \;\Rightarrow\; \sin^2(x) = 0 \;\Rightarrow\; \sin(x) = 0 \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 3:</strong> Solve.
+            \[ x = \pi k \]
+          </div>
+          <div class="answer-box">
+            <strong>Answer:</strong> \( x = \pi k, \quad k \in \mathbb{Z} \)
+          </div>
+        </div>
+        <button class="btn" onclick="revealSteps('ex-7b', this)">Show Example Solution</button>
+      </div>
+
+      <div class="example">
+        <h3>Example 7c: Solve \( \cos^2(2x) = \sin(x) \)</h3>
+        <p class="try-cue">Hmm — this one mixes squared cosine and a single sine. Try a Pythagorean swap.</p>
+        <div id="ex-7c-steps" style="display:none;">
+          <div class="step">
+            <strong class="lbl">Step 1:</strong> Replace \( \cos^2(2x) = 1 - \sin^2(2x) \).
+            \[ 1 - \sin^2(2x) = \sin(x) \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 2:</strong> Now expand \( \sin(2x) = 2\sin(x)\cos(x) \), so
+            \( \sin^2(2x) = 4\sin^2(x)\cos^2(x) \). Using \( \cos^2(x) = 1 - \sin^2(x) \):
+            \[ 1 - 4\sin^2(x)\bigl(1 - \sin^2(x)\bigr) = \sin(x) \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 3:</strong> Let \( u = \sin(x) \). Expand:
+            \[ 1 - 4u^2 + 4u^4 = u \]
+            \[ 4u^4 - 4u^2 - u + 1 = 0 \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 4:</strong> By inspection, try \( u = \tfrac{1}{2} \):
+            \( 4(\tfrac{1}{16}) - 4(\tfrac{1}{4}) - \tfrac{1}{2} + 1 = \tfrac{1}{4} - 1 - \tfrac{1}{2} + 1 = -\tfrac{1}{4} \neq 0 \).
+            Try \( u = 1 \): \( 4 - 4 - 1 + 1 = 0 \). ✓
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 5:</strong> Factor out \( (u - 1) \):
+            \[ 4u^4 - 4u^2 - u + 1 = (u - 1)(4u^3 + 4u^2 - 1) \]
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 6:</strong> The cubic factor \( 4u^3 + 4u^2 - 1 = 0 \) has one real
+            root \( u \approx 0.4196 \), the others outside \( [-1, 1] \).
+            So \( \sin(x) = 1 \) gives \( x = \tfrac{\pi}{2} + 2\pi k \), and
+            \( \sin(x) \approx 0.4196 \) gives \( x \approx 0.4327 + 2\pi k \) or \( x \approx \pi - 0.4327 + 2\pi k \).
+          </div>
+          <div class="answer-box">
+            <strong>Answer:</strong> \( x = \dfrac{\pi}{2} + 2\pi k \), \;
+            \( x \approx 0.4327 + 2\pi k \), \; or \; \( x \approx 2.7089 + 2\pi k \).
+            <p style="margin:8px 0 0;font-size:13px;font-style:italic;color:#666;">
+              <strong>Note:</strong> This problem is more involved than the others — solving the cubic
+              factor algebraically is beyond the typical scope. Most workflows accept \( \sin(x) = 1 \) as
+              the primary answer and graph the rest numerically.
+            </p>
+          </div>
+        </div>
+        <button class="btn" onclick="revealSteps('ex-7c', this)">Show Example Solution</button>
+      </div>
+
+      <div class="example">
+        <h3>Example 7d: Solve \( \tan^2(x) - \sec^2(x) = -1 \)</h3>
+        <p class="try-cue">Look for a Pythagorean identity hiding in the equation.</p>
+        <div id="ex-7d-steps" style="display:none;">
+          <div class="step">
+            <strong class="lbl">Step 1:</strong> Recall \( \sec^2(x) = \tan^2(x) + 1 \), so
+            \( \tan^2(x) - \sec^2(x) = \tan^2(x) - (\tan^2(x) + 1) = -1 \).
+          </div>
+          <div class="step">
+            <strong class="lbl">Step 2:</strong> The equation becomes \( -1 = -1 \), which is always true.
+          </div>
+          <div class="answer-box">
+            <strong>Answer:</strong> The equation is an <strong>identity</strong> — true for all \( x \) in
+            the domain (i.e., wherever \( \cos(x) \neq 0 \)).
+            \[ x \in \mathbb{R}, \quad x \neq \tfrac{\pi}{2} + \pi k \]
+          </div>
+        </div>
+        <button class="btn" onclick="revealSteps('ex-7d', this)">Show Example Solution</button>
+      </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- COLLABORATIVE -->
+    <!-- ========================================= -->
+    <section id="sec-collab">
+      <h2>8. Collaborative Learning</h2>
+
+      <div class="collab">
+        <h3>👥 Work with your group. Be ready to explain your reasoning.</h3>
+        <div class="practice">
+          <p><strong>1.</strong> Verify or solve: \( \tan(x)\sin(x) = \cos(x) \)</p>
+          <button class="btn btn-orange" onclick="revealCollab(this)">Hint</button>
+          <div class="reveal-content">
+            Treat as an equation, not an identity. Convert \( \tan(x) \) to \( \tfrac{\sin x}{\cos x} \),
+            multiply through by \( \cos(x) \), and use \( \sin^2 x + \cos^2 x = 1 \) to get a quadratic in
+            \( \cos(x) \).
+          </div>
+        </div>
+        <div class="practice">
+          <p><strong>2.</strong> Solve: \( \sin^2(x) + \cos^2(x) = \sin(x) + 1 \) <br>
+            <em>Hint: Let \( u = \sin(x) \), then solve using the quadratic formula.</em></p>
+          <button class="btn btn-orange" onclick="revealCollab(this)">Hint</button>
+          <div class="reveal-content">
+            The LHS simplifies to 1 by the Pythagorean identity. So the equation becomes
+            \( 1 = \sin(x) + 1 \), i.e., \( \sin(x) = 0 \).
+          </div>
+        </div>
+        <div class="practice">
+          <p><strong>3.</strong> Solve: \( 1 - \cos(2x) = \sin(x) \)</p>
+          <button class="btn btn-orange" onclick="revealCollab(this)">Hint</button>
+          <div class="reveal-content">
+            Use \( \cos(2x) = 1 - 2\sin^2(x) \). Then \( 1 - (1 - 2\sin^2 x) = 2\sin^2 x = \sin x \).
+            Factor: \( \sin(x)(2\sin(x) - 1) = 0 \).
+          </div>
+        </div>
+        <div class="practice">
+          <p><strong>4.</strong> Solve: \( \sin(2x) = \cos(x) \)</p>
+          <button class="btn btn-orange" onclick="revealCollab(this)">Hint</button>
+          <div class="reveal-content">
+            Replace \( \sin(2x) = 2\sin(x)\cos(x) \). Then \( 2\sin(x)\cos(x) - \cos(x) = 0 \).
+            Factor: \( \cos(x)\bigl(2\sin(x) - 1\bigr) = 0 \).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- EXIT CHECK -->
+    <!-- ========================================= -->
+    <section id="exit-check">
+      <h2>📋 Exit Check — Lesson 13</h2>
+
+      <div style="margin-bottom:24px;">
+        <p style="font-weight:bold;">Q1. Which identity is most useful for solving
+        \( 2\sin(x)\cos(x) = \tfrac{1}{2} \)?</p>
+        <label><input type="radio" name="q1" value="a"> (A) Pythagorean: \( \sin^2 x + \cos^2 x = 1 \)</label>
+        <label><input type="radio" name="q1" value="b"> (B) Double-angle: \( \sin(2x) = 2\sin x \cos x \)</label>
+        <label><input type="radio" name="q1" value="c"> (C) Reciprocal: \( \csc x = 1/\sin x \)</label>
+        <button class="btn" onclick="checkMC('q1','b','The LHS matches the double-angle pattern — rewrite as sin(2x) = 1/2 and solve.')">Check Answer</button>
+        <div class="feedback" id="q1-feedback"></div>
+      </div>
+
+      <div style="margin-bottom:24px;">
+        <p style="font-weight:bold;">Q2. True or False: \( \cos(-\theta) = -\cos(\theta) \).</p>
+        <label><input type="radio" name="q2" value="t"> True</label>
+        <label><input type="radio" name="q2" value="f"> False</label>
+        <button class="btn" onclick="checkMC('q2','f','Cosine is even, so cos(-θ) = cos(θ). The negative sign disappears.')">Check Answer</button>
+        <div class="feedback" id="q2-feedback"></div>
+      </div>
+
+      <div style="margin-bottom:24px;">
+        <p style="font-weight:bold;">Q3. Briefly explain: when you solve \( \sin(Bx) = c \), why do you need
+        to add \( \tfrac{2\pi k}{B} \) instead of \( 2\pi k \)?</p>
+        <textarea rows="3" style="width:90%;padding:8px;border:1px solid #ccc;border-radius:4px;font-size:14px;font-family:Georgia,serif;"></textarea>
+        <br>
+        <button class="btn btn-orange" onclick="reveal(this)">See Model Answer</button>
+        <div class="reveal-content">
+          You first add \( 2\pi k \) to the inside expression \( Bx \), since that's the period of sine in
+          terms of the inside argument. When you divide by \( B \) to isolate \( x \), the \( 2\pi k \) term
+          gets divided too — giving \( \tfrac{2\pi k}{B} \). The graph of \( \sin(Bx) \) completes
+          \( B \) cycles in the same horizontal distance, so the period in \( x \) is \( \tfrac{2\pi}{B} \).
+        </div>
+      </div>
+
+      <div>
+        <p style="font-weight:bold;">How confident are you with today's objectives?</p>
+        <div id="stars" class="stars-row">☆☆☆☆☆</div>
+        <p id="star-label" style="font-size:13px;color:#888;margin:4px 0 0;"></p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="bottom">
+  Math 172 &nbsp;|&nbsp; Lesson 13: Solving Trig Equations and Identities &nbsp;|&nbsp; Santa Ana College
+  &nbsp;|&nbsp; Built for SAC
+</footer>
+
+<script>
+  // Reveal one example's full step set
+  function revealSteps(id, btn) {
+    const steps = document.getElementById(id + '-steps');
+    if (steps) {
+      steps.style.display = 'block';
+      steps.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    if (btn) btn.style.display = 'none';
+  }
+
+  // Generic "reveal next sibling" used for guess-blocks and exit-check short answers
+  function reveal(btn) {
+    const next = btn.nextElementSibling;
+    if (next && next.classList.contains('reveal-content')) {
+      next.style.display = 'block';
+    }
+    btn.style.display = 'none';
+  }
+
+  // Reveal collaborative hint that lives in next sibling div
+  function revealCollab(btn) {
+    const next = btn.nextElementSibling;
+    if (next && next.classList.contains('reveal-content')) {
+      next.style.display = 'block';
+    }
+    btn.style.display = 'none';
+  }
+
+  // Multiple-choice check
+  function checkMC(name, correct, explanation) {
+    const selected = document.querySelector('input[name="' + name + '"]:checked');
+    const fb = document.getElementById(name + '-feedback');
+    if (!selected) {
+      fb.style.display = 'block';
+      fb.className = 'feedback incorrect';
+      fb.textContent = 'Please select an answer first.';
+      return;
+    }
+    if (selected.value === correct) {
+      fb.style.display = 'block';
+      fb.className = 'feedback correct';
+      fb.innerHTML = '✅ Correct! ' + explanation;
+    } else {
+      fb.style.display = 'block';
+      fb.className = 'feedback incorrect';
+      fb.innerHTML = '❌ Not quite. ' + explanation;
+    }
+  }
+
+  // Star rating
+  const starLabels = ['', 'Not confident yet', 'Somewhat unsure', 'Mostly got it', 'Confident', 'Very confident — I could explain this!'];
+  document.addEventListener('DOMContentLoaded', function() {
+    const starsEl = document.getElementById('stars');
+    if (starsEl) {
+      starsEl.addEventListener('click', function(e) {
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const starWidth = rect.width / 5;
+        const rating = Math.max(1, Math.min(5, Math.ceil(x / starWidth)));
+        this.textContent = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+        document.getElementById('star-label').textContent = starLabels[rating] || '';
+      });
+    }
+
+    // Highlight active sidebar link as user scrolls
+    const sections = document.querySelectorAll('section[id]');
+    const links = document.querySelectorAll('nav.sidebar a.navlink');
+    function setActive() {
+      let current = '';
+      sections.forEach(s => {
+        const top = s.getBoundingClientRect().top;
+        if (top < 120) current = s.id;
+      });
+      links.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', setActive);
+    setActive();
+
+    // KaTeX render
+    if (typeof renderMathInElement === 'function') {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "\\[", right: "\\]", display: true},
+          {left: "\\(", right: "\\)", inline: true}
+        ],
+        throwOnError: false
+      });
+    } else {
+      // Wait for KaTeX to load (because we use defer)
+      window.addEventListener('load', function() {
+        if (typeof renderMathInElement === 'function') {
+          renderMathInElement(document.body, {
+            delimiters: [
+              {left: "\\[", right: "\\]", display: true},
+              {left: "\\(", right: "\\)", inline: true}
+            ],
+            throwOnError: false
+          });
+        }
+      });
+    }
+  });
+</script>
+</body>
+</html>
